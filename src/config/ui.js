@@ -6,6 +6,7 @@ const elements = {
   cityDestination: document.getElementById('cityDestination'),
   startDate: document.getElementById('startDate'),
   endDate: document.getElementById('endDate'),
+  // airlinesName: document.getElementById('airlines'),
 };
 
 export default elements;

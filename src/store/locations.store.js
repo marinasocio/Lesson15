@@ -5,6 +5,7 @@ class LocationsStore {
     this.api = api;
     this.countries = {};
     this.cities = {};
+    this.airlines = {};
     this.lastSearch = {};
   }
   async init() {
@@ -28,9 +29,7 @@ class LocationsStore {
     return this.cities.filter(city => city.country_code === code);
   }
   getAirlinesByCountryCode(code) {
-    console.log(response);
-    return this.airlines.filter(airline => airline.country_code === code);
-    
+    return this.airlines.filter(airline => airline.code === code);
   }
 
 }

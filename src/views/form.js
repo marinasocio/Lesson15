@@ -7,22 +7,14 @@ class FormUi {
 		this.countryDestination = el.countryDestination;
 		this.cityOrigin = el.cityOrigin;
 		this.cityDestination = el.cityDestination;
+		this.airlinesName = el.airlinesName;
 	}
 
 	renderCountries(countries) {
-    const fragment = document.createDocumentFragment();
-		countries.forEach(({ name, code }) => {
-      const option = FormUi.optionTemplate(name, code);
-			fragment.appendChild(option);
-			console.log(option);
-		});
-		console.dir(fragment.cloneNode(true));
+		const fragment = FormUi.generateSelectFragment(countries);
+		const clone = fragment.cloneNode(true);
 		this.countryOrigin.appendChild(fragment);
-		// const fragment = FormUi.generateSelectFragment(countries);
-		// const clone = fragment.cloneNode(true);
-
-		// this.countryOrigin.appendChild(fragment);
-		// this.countryDestination.appendChild(clone);
+		this.countryDestination.appendChild(clone);
 	}
 
 	renderCities(selectName, cities) {
@@ -31,6 +23,18 @@ class FormUi {
 		this[selectName].appendChild(fragment);
 		this[selectName].disabled = false;
 		this[selectName].focus();
+	}
+
+	renderAirlines(code, airline) {
+		var src = document.getElementById('airlinesName');
+		var img = document.createElement('img');
+		img.style.width = "150px";
+		console.log(code);
+		img.src = "http://pics.avs.io/200/200/" + code +".png";
+		src.appendChild(img);
+		var ticketAirline = document.createTextNode(airline);
+		src.appendChild(ticketAirline);
+
 	}
 
 	static generateSelectFragment(arr) {

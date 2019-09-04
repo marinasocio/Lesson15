@@ -24,22 +24,21 @@ class AviaSalesService {
       return Promise.reject(err);
     }
   }
-  async prices(params) {
+  async airlines() {
     try {
-      const response = await axios.get(`${this.url}/prices/cheap`, {
-        params,
-      });
+      const response = await this.http.get(`${this.url}/airlines`);
       return response.data;
     } catch (err) {
       console.log(err);
       return Promise.reject(err);
     }
   }
-  async airlines() {
+  async prices(params) {
     try {
-      const response = await this.http.get(`${this.url}/airlines`);
-      console.log(response.data);
-
+      const response = await axios.get(`${this.url}/prices/cheap`, {
+        params,
+      });
+      return response.data;
     } catch (err) {
       console.log(err);
       return Promise.reject(err);
